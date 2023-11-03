@@ -2,13 +2,13 @@
 
 import { useState } from "react";
 import Item from "./item";
-import items from './item.json'; 
+import itemsData from './item.json'; 
 
 
 export default function ItemList() {
     const [sortBy, setSortBy] = useState("name");
 
-    const sortedItems = [...items].sort((a, b) => {
+    const sortedItems = [...itemsData].sort((a, b) => {
       switch (sortBy) {
         case 'name':
           return a.name.localeCompare(b.name);
@@ -24,13 +24,25 @@ export default function ItemList() {
           <div>
             <button
               onClick={() => setSortBy("name")}
-              style={{ backgroundColor: sortBy === "name" ? "lightblue" : "white" }}
+              style={{ backgroundColor: sortBy === "name" ? "lightblue" : "white",
+              fontSize: "18px",
+              fontWeight: "normal", 
+              marginLeft: "16px",
+              marginRight: "10px",
+              padding: "5px",
+              borderRadius: "5px" }}
             >
               Sort by Name
             </button>
             <button
               onClick={() => setSortBy("category")}
-              style={{ backgroundColor: sortBy === "category" ? "lightblue" : "white" }}
+              style={{ backgroundColor: sortBy === "category" ? "lightblue" : "white",
+              fontSize: "18px",
+              fontWeight: "normal", 
+              marginLeft: "10px",
+              marginRight: "10px",
+              padding: "5px",
+              borderRadius: "5px" }}
             >
               Sort by Category
             </button>

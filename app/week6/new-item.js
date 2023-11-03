@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 
-export default function NewItem() {
+export default function NewItem({onAddItem}) {
     const [name, setName] = useState("");
     const [quantity, setQuantity] = useState(1);
     const [category, setCategory] = useState("Produce");
@@ -18,6 +18,9 @@ export default function NewItem() {
           category,
         };
         console.log(item);
+
+        // Call the onAddItem prop and pass the item object
+        onAddItem(item);
 
         setName("");
         setQuantity(1);
@@ -39,9 +42,9 @@ export default function NewItem() {
     return (
         <main>
         
-            <div className="min-h-screen bg-blue-gray-100 flex items-center justify-center">
+            <div className="min-h-1/2 bg-blue-gray-100 flex items-center justify-center">
 
-                <form onSubmit={handleSubmit} className="bg-blue-100 p-4 space-y-4 rounded-lg">
+                <form onSubmit={handleSubmit} className="bg-blue-100 p-4 space-y- rounded-lg">
                     <label className="block mb-4">
                         <span className="text-gray-800">Event Name:</span>
                         <input
