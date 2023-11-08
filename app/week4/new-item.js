@@ -43,7 +43,7 @@ export default function NewItem() {
 
                 <form onSubmit={handleSubmit} className="bg-blue-100 p-4 space-y-4 rounded-lg">
                     <label className="block mb-4">
-                        <span className="text-gray-800">Event Name:</span>
+                        <span className="text-gray-800">Add New Item:</span>
                         <input
                             required
                             onChange={handleNameChange}

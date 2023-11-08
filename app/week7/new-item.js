@@ -42,7 +42,7 @@ export default function NewItem({onAddItem}) {
     return (
         <main>
         
-            <div className="min-h-1/2 bg-blue-gray-100 flex items-center justify-center">
+            <div className="min-h-1/2 bg-blue-gray-100 flex items-center">
 
                 <form onSubmit={handleSubmit} className="bg-blue-100 p-4 space-y- rounded-lg">
                     <label className="block mb-4">
