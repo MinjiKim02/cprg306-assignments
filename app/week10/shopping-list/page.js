@@ -1,18 +1,35 @@
 "use client";
 
-import React, { useState } from 'react';
-import NewItem from './new-item'; 
-import ItemList from './item-list';
-import itemsData from './item.json';
-import MealIdeas from './meal-ideas'; 
+import { useState, useEffect } from 'react';
+import { getItems, addItem } from '../_services/shopping-list-service';
 
 export default function Page() {
   const [items, setItems] = useState(itemsData);
   const [selectedItemName, setSelectedItemName] = useState("");
 
+  // Function to load items from Firestore
+  async function loadItems() {
+    try {
+      const fetchedItems = await getItems(user.uid);
+      setItems(fetchedItems);
+    } catch (error) {
+      console.error("Error loading items: ", error);
+    }
+  }
+
+  // useEffect to call loadItems on component mount
+  useEffect(() => {
+    loadItems();
+  }, [user.uid]);
+  
   // Event handler to add a new item to the list
-  const handleAddItem = (newItem) => {
-    setItems([...items, newItem]);
+  const handleAddItem = async (newItem) => {
+    try {
+      const addedItem = await addItem(user.uid, newItem);
+      setItems((prevItems) => [...prevItems, addedItem]);
+    } catch (error) {
+      console.error("Error adding item: ", error);
+    }
   };
 
   // Event handler to select an item from the list
